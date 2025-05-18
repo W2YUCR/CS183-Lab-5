@@ -1,0 +1,45 @@
+networks:
+  cs183-local:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.0.0/16"
+services:
+  auth_server:
+    container_name: auth_server
+    build:
+      privileged: true
+      target: authserver
+    hostname: authserver.cs183.local
+    cgroup: host
+    ports:
+     - '2020:22'
+     - '389:389'
+    networks:
+      cs183-local:
+        ipv4_address: 192.168.2.3
+    volumes:
+      - type: tmpfs
+        target: /run
+      - type: tmpfs
+        target: /tmp
+      - "/sys/fs/cgroup:/sys/fs/cgroup:rw"
+  client:
+    container_name: client
+    build:
+      privileged: true
+      target: client
+    cgroup: host
+    hostname: client1.cs183.local
+    ports:
+     - '2021:22'
+    networks:
+      cs183-local:
+        ipv4_address: 192.168.2.4
+    volumes:
+      - type: tmpfs
+        target: /run
+      - type: tmpfs
+        target: /tmp
+      - "/sys/fs/cgroup:/sys/fs/cgroup:rw"

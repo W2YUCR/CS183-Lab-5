@@ -1,0 +1,17 @@
+dn: dc=cs183,dc=local
+dc: cs183
+objectClass: top
+objectClass: domain
+
+dn: cn=ldapadm ,dc=cs183,dc=local
+objectClass: organizationalRole
+cn: ldapadm
+description: LDAP Manager
+
+dn: ou=People,dc=cs183,dc=local
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Group,dc=cs183,dc=local
+objectClass: organizationalUnit
+ou: Group
