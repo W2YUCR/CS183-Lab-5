@@ -8,25 +8,26 @@ ssh-keygen -t rsa -f ./ssh_host_rsa_key
 
 ```sh
 docker buildx create --name insecure-builder --buildkitd-flags "--allow-insecure-entitlement=security.insecure" --use
+docker compose build --build-arg username=<username>
 docker compose up --detach
 ```
 
-## Exec into the authentication server
+## SSH into the authentication server
 
 ```sh
-docker compose exec auth_server /bin/bash 
+ssh <username>@127.0.0.1 -p 2020 -i ./ssh_host_rsa_key
 ```
 
 ```sh
-./setup.sh
+sudo ./setup.sh
 ```
 
-## Exec into the client
+## SSH into the client
 
 ```sh
-docker compose exec client /bin/bash 
+ssh <username>@127.0.0.1 -p 2021 -i ./ssh_host_rsa_key
 ```
 
 ```sh
-./setup.sh
+sudo ./setup.sh
 ```

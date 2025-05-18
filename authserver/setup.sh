@@ -1,3 +1,4 @@
+#!/bin/bash
 systemctl enable --now slapd
 
 read -s -p "Enter new LDAP password: " ldap_password

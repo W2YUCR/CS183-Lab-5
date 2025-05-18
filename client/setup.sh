@@ -1,3 +1,4 @@
+#!/bin/bash
 authselect select sssd --force
 mkdir -p /etc/sssd
 cp sssd.conf /etc/sssd/sssd.conf
