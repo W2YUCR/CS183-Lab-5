@@ -59,6 +59,8 @@ EXPOSE 389
 
 FROM base AS client
 
-RUN dnf -y install openldap-clients nss-pam-ldapd sssd-ldap authselect
+RUN dnf -y install openldap-clients nss-pam-ldapd sssd-ldap authselect oddjob-mkhomedir
+
+RUN systemctl enable oddjobd
 
 COPY client home/${username}/

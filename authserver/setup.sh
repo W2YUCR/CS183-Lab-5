@@ -5,7 +5,8 @@ read -s -p "Enter new LDAP password: " ldap_password
 
 hashed_password=$(slappasswd -h {SSHA} -s "${ldap_password}")
 
-sed -i "s/HASHED_PASSWORD/${hashed_password}/g" chrootpw.ldif
+sed -i "s#HASHED_PASSWORD#${hashed_password}#g" chrootpw.ldif
+sed -i "s#HASHED_PASSWORD#${hashed_password}#g" chdomain.ldif
 
 ldapmodify -Y EXTERNAL  -H ldapi:/// -f chdomain.ldif
 ldapadd -Y EXTERNAL -H ldapi:/// -f chrootpw.ldif

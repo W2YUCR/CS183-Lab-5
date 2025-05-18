@@ -17,7 +17,7 @@ olcRootDN: cn=ldapadm,dc=cs183,dc=local
 dn: olcDatabase={2}mdb,cn=config
 changetype: modify
 add: olcRootPW
-olcRootPW: password
+olcRootPW: HASHED_PASSWORD
 
 dn: olcDatabase={2}mdb,cn=config
 changetype: modify
